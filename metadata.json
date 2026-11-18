@@ -1,0 +1,6 @@
+{
+  "name": "LitedirtVM",
+  "description": "LitedirtVM: Mesin virtual & container Android 10 (API 29) multi-instance untuk Android dengan layar virtual real-time, jendela mengambang, import aplikasi & Roblox auto-update, browser web, berbagi berkas 2-arah, akses root virtual, dan integrasi Shizuku.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
