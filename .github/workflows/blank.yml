@@ -20,8 +20,16 @@ jobs:
           java-version: 17
 
       - uses: gradle/actions/setup-gradle@v4
-        with:  
-         gradle-version: 9.3.1
+        with:
+          gradle-version: 9.3.1
+
+      - name: Buat debug keystore
+        run: |
+          mkdir -p ~/.android
+          keytool -genkey -v -keystore ~/.android/debug.keystore \
+            -storepass android -alias androiddebugkey -keypass android \
+            -keyalg RSA -keysize 2048 -validity 10000 \
+            -dname "CN=Android Debug,O=Android,C=US"
 
       - name: Build debug APK
         run: gradle :app:assembleDebug --no-daemon
@@ -32,8 +40,7 @@ jobs:
           mkdir -p out
           cp "$APK" "out/LitedirtVM-${{ github.ref_name }}.apk"
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: LitedirtVM-apk
           path: out/*.apk
